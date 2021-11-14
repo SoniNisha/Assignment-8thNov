@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nov 8th Assignment</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            background-image: url(https://images.pexels.com/photos/571169/pexels-photo-571169.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100vw;
+            flex-wrap: wrap;
+        }
+
+        table {
+            width: 30em;
+            height: 20em;
+            border: 2px solid black;
+            box-shadow: 0 0 10px black;
+            text-align: center;
+            margin: 20px;
+        }
+
+        label {
+            height: 1.5em;
+            font-size: 1.2em;
+            padding: 12px;
+        }
+
+        input {
+            height: 1.2em;
+            font-size: 1.2em;
+            border: 1px solid black;
+        }
+    </style>
+    <script>
+        function math() {
+            var radius = document.getElementById("r").value;
+            var height = document.getElementById("h").value;
+            var surf = document.getElementById("surfArea");
+            surf.value = ((2 * Math.PI * radius * radius) + (2 * Math.PI * radius * height)).toFixed(4)
+            var vol = document.getElementById("volume");
+            vol.value = (Math.PI * radius * radius * height).toFixed(4);
+        }
+
+        function ElecPow() {
+            var voltage = document.getElementById("volts").value;
+            var current = document.getElementById("amps").value;
+            var power = document.getElementById("watts");
+            power.value = (voltage*current).toFixed(4);
+        }
+
+        function Paint() {
+            var amount = document.getElementById("amount").value;
+            var height = document.getElementById("hi").value;
+            var width = document.getElementById("w").value;
+            var num = document.getElementById("n");
+            var area = height*width;
+            num.value = Math.floor(amount/area);
+        }
+    </script>
+</head>
+
+<body>
+    <div id="container">
+        <div id="myCylinder">
+            <table>
+                <tr>
+                    <td colspan="2">
+                        <h2 style="text-align: center; font-size: 2.5em;">Volume of a Cylinder</h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label><strong>Radius</strong>(in cm) : </label></td>
+                    <td><input type="number" id="r" onchange="math()" value="1"></td>
+                </tr>
+                <tr>
+                    <td><label><strong>Height</strong>(in cm) : </label></td>
+                    <td><input type="number" id="h" onchange="math()" value="1"></td>
+                </tr>
+                <tr>
+                    <td><label><strong>Surface Area</strong>(in cm<sup>2</sup>) : </label></td>
+                    <td><input type="number" id="surfArea" value="12.5664" disabled
+                            style="background-color: white; color: black;"></label></td>
+                </tr>
+                <tr>
+                    <td><label><strong>Volume</strong>(in cm<sup>3</sup>) : </label></td>
+                    <td><input type="number" id="volume" value="3.1416" disabled
+                            style="background-color: white; color: black;"></label></td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="myDiv">
+            <table>
+                <tr>
+                    <td colspan="2"><h2 style="text-align: center; font-size: 2.5em;">Electric Power</h2></td>
+                </tr>
+                <tr>
+                    <td><label><strong>Voltage</strong>(in V) : </label></td>
+                    <td><input type="number" id="volts" onchange="ElecPow()" value="1"></td>
+                </tr>
+                <tr>
+                    <td><label><strong>Current</strong>(in A) : </label></td>
+                    <td><input type="number" id="amps" onchange="ElecPow()" value="1"></td>
+                </tr>
+                <tr>
+                    <td><label><strong>Power</strong>(in Watts) : </label></td>
+                    <td><input type="number" id="watts" value="1" disabled style="background-color: white; color: black;"></label></td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="myDiv">
+            <table>
+                <tr>
+                    <td colspan="2"><h2 style="text-align: center; font-size: 2.5em;">Wall Count</h2></td>
+                </tr>
+                <tr>
+                    <td><label><strong>Paint</strong>(in m<sup>2</sup>) : </label></td>
+                    <td><input type="number" id="amount" onchange="Paint()" value="1"></td>
+                </tr>
+                <tr>
+                    <td><label><strong>Wall Height</strong>(in m) : </label></td>
+                    <td><input type="number" id="hi" onchange="Paint()" value="1"></td>
+                </tr>
+                <tr>
+                    <td><label><strong>Wall width</strong>(in m) : </label></td>
+                    <td><input type="number" id="w" onchange="Paint()" value="1"></label></td>
+                </tr>
+                <tr>
+                    <td><label><strong>Number of walls</strong> : </label></td>
+                    <td><input type="number" id="n" value="1" disabled style="background-color: white; color: black;"></label></td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+</body>
+
+</html>
